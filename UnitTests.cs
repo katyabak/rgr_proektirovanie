@@ -1,6 +1,6 @@
 public class UnitTests
 {
-    // Тест ф-ии для инициализации массива муравьев с случайными путями
+    // РўРµСЃС‚ С„-РёРё РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РјР°СЃСЃРёРІР° РјСѓСЂР°РІСЊРµРІ СЃ СЃР»СѓС‡Р°Р№РЅС‹РјРё РїСѓС‚СЏРјРё
     [Fact]
     public void DistanceOfTrail_Returns_CorrectDistance()
     {
@@ -15,14 +15,14 @@ public class UnitTests
             new int[] { 5, 1, 7, 1, 9, 0 },
         };
 
-        int[] trail = { 0, 1, 2, 3, 4, 5 }; // пример пути
+        int[] trail = { 0, 1, 2, 3, 4, 5 }; // ГЇГ°ГЁГ¬ГҐГ° ГЇГіГІГЁ
 
         // Act
         double distance = AntColony.DistanceOfTrail(trail, graph);
 
         // Assert
-        // Ожидаемое расстояние должно быть суммой расстояний между последовательными узлами
-        // и расстояние от последнего узла до первого узла
+        // РћР¶РёРґР°РµРјРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ СЃСѓРјРјРѕР№ СЂР°СЃСЃС‚РѕСЏРЅРёР№ РјРµР¶РґСѓ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅС‹РјРё СѓР·Р»Р°РјРё
+        // Рё СЂР°СЃСЃС‚РѕСЏРЅРёРµ РѕС‚ РїРѕСЃР»РµРґРЅРµРіРѕ СѓР·Р»Р° РґРѕ РїРµСЂРІРѕРіРѕ СѓР·Р»Р°
         double expectedDistance = graph[0][1] + graph[1][2] + graph[2][3] + graph[3][4] + graph[4][5] + graph[5][0];
         Assert.Equal(expectedDistance, distance);
     }
@@ -39,7 +39,7 @@ public class UnitTests
         // Assert
         Assert.Equal(numAnts, ants.Length);
     }
-    // Тест ф-ции инициализации графа с заданными весами рёбер
+    // РўРµСЃС‚ С„-С†РёРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РіСЂР°С„Р° СЃ Р·Р°РґР°РЅРЅС‹РјРё РІРµСЃР°РјРё СЂС‘Р±РµСЂ
     [Fact]
     public void InitializeGraph_InitializedCorrectly()
     {
@@ -57,7 +57,7 @@ public class UnitTests
 
         Assert.Equal(expectedGraph, graph);
     }
-    // Проверка создания случайного пути начиная с указанного узла
+    // РџСЂРѕРІРµСЂРєР° СЃРѕР·РґР°РЅРёСЏ СЃР»СѓС‡Р°Р№РЅРѕРіРѕ РїСѓС‚Рё РЅР°С‡РёРЅР°СЏ СЃ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СѓР·Р»Р°
     [Fact]
     public void TakeRandomTrail_CreatedCorrectly()
     {
@@ -68,7 +68,7 @@ public class UnitTests
 
         Assert.Equal(numNodes, trail.Length);
 
-        // Проверка, что каждый узел встречается в пути один раз
+        // РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РєР°Р¶РґС‹Р№ СѓР·РµР» РІСЃС‚СЂРµС‡Р°РµС‚СЃСЏ РІ РїСѓС‚Рё РѕРґРёРЅ СЂР°Р·
         for (int i = 0; i < numNodes; i++)
         {
             Assert.Contains(i, trail);
@@ -83,7 +83,7 @@ public class UnitTests
         int[][] ants = new int[numAnts][];
         double[][] pheromones = new double[numNodes][];
         int[][] dists = AntColony.InitializeGraph();
-        for (int i = 0; i < numNodes; i++) // инициализация феромонов
+        for (int i = 0; i < numNodes; i++) // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С„РµСЂРѕРјРѕРЅРѕРІ
         {
             pheromones[i] = new double[numNodes];
             for (int j = 0; j < numNodes; j++)
@@ -95,12 +95,12 @@ public class UnitTests
         AntColony.UpdateAnts(ants, pheromones, dists);
 
         // Assert
-        // проверка обновился ли путь
+        // РїСЂРѕРІРµСЂРєР° РѕР±РЅРѕРІРёР»СЃСЏ Р»Рё РїСѓС‚СЊ
         for (int k = 0; k < numAnts; k++)
         {
-            Assert.NotNull(ants[k]); // путь не должен = 0
-            Assert.Equal(numNodes, ants[k].Length); // длина пути должна быть = кол-во узлов
-            // находится ли каждый узел на пути в диапазоне узлов
+            Assert.NotNull(ants[k]); // РїСѓС‚СЊ РЅРµ РґРѕР»Р¶РµРЅ = 0
+            Assert.Equal(numNodes, ants[k].Length); // РґР»РёРЅР° РїСѓС‚Рё РґРѕР»Р¶РЅР° Р±С‹С‚СЊ = РєРѕР»-РІРѕ СѓР·Р»РѕРІ
+            // РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РєР°Р¶РґС‹Р№ СѓР·РµР» РЅР° РїСѓС‚Рё РІ РґРёР°РїР°Р·РѕРЅРµ СѓР·Р»РѕРІ
             foreach (var node in ants[k])
             {
                 Assert.InRange(node, 0, numNodes - 1);
